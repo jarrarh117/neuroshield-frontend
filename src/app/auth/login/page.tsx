@@ -13,6 +13,11 @@ export default function LoginPage() {
   const { user, loading } = useAuthContext();
   const router = useRouter();
   const [adminClickCount, setAdminClickCount] = useState(0);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     if (!loading && user) {
@@ -30,23 +35,18 @@ export default function LoginPage() {
     setAdminClickCount(prev => prev + 1);
   };
 
-  // Show loader ONLY on initial load when we don't know auth state yet
-  // Don't show loader during login attempts (let the form handle its own loading state)
-  if (loading && user === null && typeof window !== 'undefined') {
-    // Check if this is truly initial load (no login attempt in progress)
-    const isInitialLoad = !sessionStorage.getItem('hasAttemptedLogin');
-    if (isInitialLoad) {
-      return (
-        <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
-          <Loader2 className="h-16 w-16 animate-spin text-primary" />
-          <p className="mt-4 text-muted-foreground">Verifying credentials...</p>
-        </div>
-      );
-    }
+  // Show loader during initial auth check
+  if (loading) {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+        <Loader2 className="h-16 w-16 animate-spin text-primary" />
+        <p className="mt-4 text-muted-foreground">Verifying credentials...</p>
+      </div>
+    );
   }
 
-  // If user exists and not loading, show redirect loader
-  if (!loading && user) {
+  // If user exists, show redirect loader
+  if (user) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
         <Loader2 className="h-16 w-16 animate-spin text-primary" />
@@ -54,8 +54,6 @@ export default function LoginPage() {
       </div>
     );
   }
-
-  // Only render form if not loading and no user (i.e., needs to log in)
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background p-6 relative">
        <motion.div

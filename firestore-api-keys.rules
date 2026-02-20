@@ -1,0 +1,25 @@
+// Firestore Security Rules for API Keys Collection
+// Add these rules to your existing firestore.rules file
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // API Keys Collection
+    match /api_keys/{keyId} {
+      // Users can only read their own API keys
+      allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+      
+      // Only server-side (Admin SDK) can create/update/delete API keys
+      // Client-side creation is handled through Cloud Functions or API routes
+      allow create, update, delete: if false;
+    }
+    
+    // Usage tracking sub-collection (optional for detailed analytics)
+    match /api_keys/{keyId}/usage/{usageId} {
+      allow read: if request.auth != null && 
+                     get(/databases/$(database)/documents/api_keys/$(keyId)).data.userId == request.auth.uid;
+      allow write: if false; // Only server-side can write usage data
+    }
+  }
+}

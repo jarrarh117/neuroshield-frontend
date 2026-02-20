@@ -1,6 +1,6 @@
 
 import type { LucideIcon } from 'lucide-react';
-import { LayoutDashboard, UploadCloud, Link2, TrendingUp, FileText, UserCircle, ShieldAlert, Settings, LogIn, MessageSquare, Users, Chrome } from 'lucide-react';
+import { LayoutDashboard, UploadCloud, Link2, TrendingUp, FileText, UserCircle, ShieldAlert, Settings, LogIn, MessageSquare, Users, Chrome, Key } from 'lucide-react';
 
 export interface NavItem {
   title: string;
@@ -65,6 +65,12 @@ export const mainNav: NavSection[] = [
         href: '/reports',
         icon: FileText,
         tooltip: 'View Reports',
+      },
+      {
+        title: 'API Keys',
+        href: '/api-keys',
+        icon: Key,
+        tooltip: 'Manage API Keys',
       },
       {
         title: 'Profile',
