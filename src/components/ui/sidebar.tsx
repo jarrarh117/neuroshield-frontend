@@ -75,6 +75,27 @@ const SidebarProvider = React.forwardRef<
     const isAuthPage = pathname.startsWith('/auth/'); // Check if it's an auth page
     const isAdminPage = pathname.startsWith('/admin/');
 
+    // Lock body scroll when mobile sidebar is open
+    React.useEffect(() => {
+      if (isMobile && openMobile) {
+        // Save current scroll position
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+        document.body.style.overflow = 'hidden';
+        
+        return () => {
+          // Restore scroll position
+          document.body.style.position = '';
+          document.body.style.top = '';
+          document.body.style.width = '';
+          document.body.style.overflow = '';
+          window.scrollTo(0, scrollY);
+        };
+      }
+    }, [isMobile, openMobile]);
+
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -205,7 +226,7 @@ const Sidebar = React.forwardRef<
 
     if (isMobile) {
       return (
-        <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+        <Sheet open={openMobile} onOpenChange={setOpenMobile} modal={true} {...props}>
           <SheetContent
             data-sidebar="sidebar"
             data-mobile="true"
@@ -216,6 +237,7 @@ const Sidebar = React.forwardRef<
               } as React.CSSProperties
             }
             side={side}
+            onOpenAutoFocus={(e) => e.preventDefault()}
           >
             <div className="flex h-full w-full flex-col">{children}</div>
           </SheetContent>
@@ -416,8 +438,13 @@ const SidebarContent = React.forwardRef<
       data-sidebar="content"
       className={cn(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "[data-mobile=true]_&:overflow-y-auto [data-mobile=true]_&:overflow-x-hidden [data-mobile=true]_&:-webkit-overflow-scrolling-touch",
         className
       )}
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        touchAction: 'pan-y'
+      } as React.CSSProperties}
       {...props}
     />
   )
