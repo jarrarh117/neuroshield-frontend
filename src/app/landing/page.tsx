@@ -131,9 +131,9 @@ export default function LandingPage() {
             <div className="absolute top-20 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="w-full px-6 sm:px-8 lg:px-12 relative z-10">
           <motion.div
-            className="text-center mx-auto w-full"
+            className="text-center w-full"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
@@ -253,7 +253,7 @@ export default function LandingPage() {
 
       {/* Features Section */}
       <section id="features" className="relative py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="w-full px-6 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -287,7 +287,7 @@ export default function LandingPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
           >
             <FeatureCard
               icon={FileSearch}
@@ -331,7 +331,7 @@ export default function LandingPage() {
 
       {/* How It Works Section */}
       <section id="how-it-works" className="relative py-16 sm:py-20 bg-gradient-to-b from-muted/30 to-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="w-full px-6 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -361,53 +361,8 @@ export default function LandingPage() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 max-w-6xl mx-auto relative"
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10"
           >
-            {/* Animated Connection Lines */}
-            <div className="hidden md:block absolute top-[60px] left-[20%] right-[20%] h-1 overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-primary via-accent to-primary rounded-full"
-                initial={{ scaleX: 0, opacity: 0 }}
-                whileInView={{ scaleX: 1, opacity: 0.4 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.5 }}
-              />
-              {/* Animated glow */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent blur-sm"
-                animate={{
-                  x: ['-100%', '200%'],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-              />
-            </div>
-            
-            {/* Arrow indicators */}
-            <div className="hidden md:block absolute top-[55px] left-[40%] text-accent">
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 1 }}
-              >
-                <ArrowRight className="w-6 h-6" />
-              </motion.div>
-            </div>
-            <div className="hidden md:block absolute top-[55px] right-[40%] text-accent">
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-              >
-                <ArrowRight className="w-6 h-6" />
-              </motion.div>
-            </div>
-            
             <StepCard
               number="1"
               title="Sign Up"
@@ -432,7 +387,7 @@ export default function LandingPage() {
 
       {/* Stats Section */}
       <section id="stats" className="relative py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="w-full px-6 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -459,7 +414,7 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="relative py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="w-full px-6 sm:px-8 lg:px-12">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -547,70 +502,41 @@ function StepCard({ number, title, description, icon: Icon }: StepCardProps) {
   return (
     <motion.div 
       variants={itemVariants} 
-      className="text-center relative group"
-      whileHover={{ y: -10 }}
+      className="relative group w-full"
+      whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
     >
-      {/* Glow effect on hover */}
-      <motion.div
-        className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
-      />
-
-      {/* Number badge */}
-      <motion.div
-        className="relative mb-6 mx-auto w-24 h-24 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-4xl font-bold text-white shadow-2xl shadow-primary/50 overflow-hidden"
-        whileHover={{ scale: 1.1, rotate: 5 }}
-        transition={{ duration: 0.3 }}
-      >
-        {/* Animated gradient overlay */}
+      <div className="relative p-8 rounded-2xl bg-card/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300 h-full">
+        {/* Gradient background on hover */}
         <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         />
         
-        {/* Shine effect */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-          animate={{
-            x: ['-100%', '200%'],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatDelay: 3,
-          }}
-        />
-        
-        <span className="relative z-10">{number}</span>
-      </motion.div>
-      
-      {/* Icon badge */}
-      <motion.div 
-        className="mb-6 flex justify-center"
-        whileHover={{ scale: 1.1 }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className="relative p-4 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 inline-block backdrop-blur-sm">
-          {/* Glow effect */}
-          <motion.div
-            className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-          <Icon className="w-8 h-8 text-primary relative z-10" />
+        {/* Number badge - top left */}
+        <div className="absolute -top-4 -left-4 w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-2xl font-bold text-white shadow-lg shadow-primary/30 z-10">
+          {number}
         </div>
-      </motion.div>
-      
-      {/* Content */}
-      <div className="relative z-10">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent">
-          {title}
-        </h3>
-        <p className="text-muted-foreground leading-relaxed text-base sm:text-lg max-w-sm mx-auto">
-          {description}
-        </p>
-      </div>
 
-      {/* Decorative corner elements */}
-      <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-primary/20 rounded-tl-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-accent/20 rounded-br-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Icon */}
+        <div className="relative mb-6 mt-4">
+          <div className="w-16 h-16 mx-auto rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <Icon className="w-8 h-8 text-primary" />
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 text-center">
+          <h3 className="text-xl font-bold mb-3 text-foreground">
+            {title}
+          </h3>
+          <p className="text-muted-foreground leading-relaxed text-sm">
+            {description}
+          </p>
+        </div>
+
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl" />
+      </div>
     </motion.div>
   );
 }
@@ -628,7 +554,7 @@ function FeatureCard({ icon: Icon, title, description, color }: FeatureCardProps
   return (
     <motion.div
       variants={itemVariants}
-      className="relative h-full"
+      className="relative h-full w-full"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       whileHover={{ y: -10, scale: 1.02 }}
