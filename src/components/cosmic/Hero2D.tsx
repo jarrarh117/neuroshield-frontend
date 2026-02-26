@@ -6,16 +6,17 @@ import { Shield } from 'lucide-react';
 export function Hero2D() {
   return (
     <div className="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden opacity-30">
-      {/* Animated gradient orbs */}
+      {/* Animated gradient orbs - centered with minimal movement */}
       <motion.div
         className="absolute w-64 h-64 rounded-full blur-3xl opacity-40"
         style={{
           background: 'radial-gradient(circle, rgba(168,85,247,0.6) 0%, transparent 70%)',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
         }}
         animate={{
-          scale: [1, 1.2, 1],
-          x: [-50, 50, -50],
-          y: [-30, 30, -30],
+          scale: [1, 1.15, 1],
         }}
         transition={{
           duration: 8,
@@ -28,11 +29,12 @@ export function Hero2D() {
         className="absolute w-64 h-64 rounded-full blur-3xl opacity-40"
         style={{
           background: 'radial-gradient(circle, rgba(56,189,248,0.6) 0%, transparent 70%)',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
         }}
         animate={{
-          scale: [1.2, 1, 1.2],
-          x: [50, -50, 50],
-          y: [30, -30, 30],
+          scale: [1.15, 1, 1.15],
         }}
         transition={{
           duration: 8,
