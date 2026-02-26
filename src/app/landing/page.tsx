@@ -131,9 +131,9 @@ export default function LandingPage() {
             <div className="absolute top-20 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full max-w-7xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
           <motion.div
-            className="text-center mx-auto"
+            className="text-center mx-auto w-full"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
@@ -156,7 +156,7 @@ export default function LandingPage() {
             {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1] px-4"
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
             >
               <span className="inline-block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
                 Protect Your
@@ -174,7 +174,7 @@ export default function LandingPage() {
             {/* Subheadline */}
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground/90 mb-10 max-w-4xl mx-auto leading-relaxed font-light px-4"
+              className="text-lg sm:text-xl md:text-2xl text-muted-foreground/90 mb-10 max-w-4xl mx-auto leading-relaxed font-light"
             >
               Advanced malware detection powered by machine learning. Scan files and URLs in real-time, 
               get instant threat analysis, and stay protected with{' '}
