@@ -68,7 +68,7 @@ export default function LoginPage() {
       </motion.div>
       <div className="z-10 flex flex-col items-center justify-center flex-grow w-full max-w-md space-y-6 text-center">
         <div>
-          <Link href="/" className="inline-block mb-6">
+          <Link href="/landing" className="inline-block mb-6">
             <Logo className="h-12 w-12 text-primary" />
           </Link>
           <h1 className="text-3xl font-bold tracking-tight text-primary">Welcome Back, Operator</h1>

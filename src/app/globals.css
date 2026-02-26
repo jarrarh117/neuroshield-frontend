@@ -172,3 +172,71 @@
     overflow: hidden;
   }
 }
+
+/* Prevent flash of unstyled content during initial load */
+@layer utilities {
+  /* Ensure smooth page transitions */
+  #__next {
+    @apply min-h-screen;
+  }
+  
+  /* Hide content until React hydrates to prevent flash */
+  html:not(.hydrated) body > div:not([data-loader]) {
+    @apply opacity-0;
+  }
+  
+  html.hydrated body > div {
+    @apply transition-opacity duration-300;
+  }
+}
+
+/* Enhanced Landing Page Animations */
+@layer utilities {
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient {
+    animation: gradient 8s ease infinite;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  /* Text selection */
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Focus visible for accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
