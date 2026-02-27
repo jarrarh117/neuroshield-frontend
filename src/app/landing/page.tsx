@@ -7,7 +7,7 @@ import { Shield, Zap, Lock, TrendingUp, ArrowRight, FileSearch, Link2, BarChart3
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { StarfieldBackground } from '@/components/cosmic/StarfieldBackground';
-import { LandingLoader } from '@/components/cosmic/LandingLoader';
+import { CosmicPortalLoader } from '@/components/cosmic/CosmicPortalLoader';
 import { Hero2D } from '@/components/cosmic/Hero2D';
 
 const containerVariants = {
@@ -65,7 +65,7 @@ export default function LandingPage() {
   };
 
   if (showLoader) {
-    return <LandingLoader onComplete={handleLoaderComplete} duration={2500} />;
+    return <CosmicPortalLoader onComplete={handleLoaderComplete} duration={2500} />;
   }
 
   return (
