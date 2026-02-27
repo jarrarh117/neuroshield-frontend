@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -46,7 +47,8 @@ const fadeInUp = {
 };
 
 export default function LandingPage() {
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
@@ -54,9 +56,10 @@ export default function LandingPage() {
   // Check sessionStorage on client-side only
   useEffect(() => {
     const hasShown = sessionStorage.getItem('loaderShown');
-    if (hasShown) {
-      setShowLoader(false);
+    if (!hasShown) {
+      setShowLoader(true);
     }
+    setIsReady(true);
   }, []);
 
   const handleLoaderComplete = () => {
@@ -64,8 +67,14 @@ export default function LandingPage() {
     sessionStorage.setItem('loaderShown', 'true');
   };
 
-  if (showLoader) {
+  // Show loader only if needed
+  if (showLoader && isReady) {
     return <CosmicPortalLoader onComplete={handleLoaderComplete} duration={2500} />;
+  }
+
+  // Don't render content until ready
+  if (!isReady) {
+    return null;
   }
 
   return (
