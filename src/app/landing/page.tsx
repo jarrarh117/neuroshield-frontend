@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Shield, Zap, Lock, TrendingUp, ArrowRight, FileSearch, Link2, BarChart3, CheckCircle2, Star, Users, Award, Sparkles, type LucideIcon } from 'lucide-react';
@@ -46,22 +46,22 @@ const fadeInUp = {
 };
 
 export default function LandingPage() {
-  const [showLoader, setShowLoader] = useState(() => {
-    // Check if loader has already been shown in this session
-    if (typeof window !== 'undefined') {
-      return !sessionStorage.getItem('loaderShown');
-    }
-    return true;
-  });
+  const [showLoader, setShowLoader] = useState(true);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
+  // Check sessionStorage on client-side only
+  useEffect(() => {
+    const hasShown = sessionStorage.getItem('loaderShown');
+    if (hasShown) {
+      setShowLoader(false);
+    }
+  }, []);
+
   const handleLoaderComplete = () => {
     setShowLoader(false);
-    if (typeof window !== 'undefined') {
-      sessionStorage.setItem('loaderShown', 'true');
-    }
+    sessionStorage.setItem('loaderShown', 'true');
   };
 
   if (showLoader) {
