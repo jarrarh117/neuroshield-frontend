@@ -139,24 +139,24 @@ export default function LandingPage() {
             variants={containerVariants}
           >
             {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-8 inline-block">
+            <motion.div variants={itemVariants} className="mb-6 sm:mb-8 inline-block px-4">
               <motion.div
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 border border-primary/30 text-primary text-sm font-medium backdrop-blur-sm shadow-lg shadow-primary/20"
+                className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 border border-primary/30 text-primary text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg shadow-primary/20"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
                 transition={{ duration: 0.2 }}
               >
-                <Sparkles className="h-4 w-4 animate-pulse" />
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold">
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" />
+                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold whitespace-nowrap">
                   AI-Powered Malware Detection
                 </span>
-                <Sparkles className="h-4 w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
               </motion.div>
             </motion.div>
 
             {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-6 sm:mb-8 leading-[1.15] px-4"
             >
               <span className="inline-block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
                 Protect Your
@@ -166,7 +166,7 @@ export default function LandingPage() {
                 Digital World
               </span>
               <br />
-              <span className="inline-block text-foreground/90 text-4xl sm:text-5xl md:text-6xl lg:text-7xl mt-2">
+              <span className="inline-block text-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2">
                 with AI Intelligence
               </span>
             </motion.h1>
@@ -174,7 +174,7 @@ export default function LandingPage() {
             {/* Subheadline */}
             <motion.p
               variants={itemVariants}
-              className="text-lg sm:text-xl md:text-2xl text-muted-foreground/90 mb-10 max-w-4xl mx-auto leading-relaxed font-light"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground/90 mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed font-light px-4"
             >
               Advanced malware detection powered by machine learning. Scan files and URLs in real-time, 
               get instant threat analysis, and stay protected with{' '}
@@ -184,9 +184,9 @@ export default function LandingPage() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-12"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center mb-10 sm:mb-12 px-4"
             >
-              <Button size="lg" asChild className="btn-glow text-lg px-10 py-7 rounded-xl shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 group relative overflow-hidden">
+              <Button size="lg" asChild className="btn-glow text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-xl shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 group relative overflow-hidden w-full sm:w-auto">
                 <Link href="/auth/signup">
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20"
@@ -200,10 +200,10 @@ export default function LandingPage() {
                     }}
                   />
                   <span className="relative z-10 font-semibold">Get Started Free</span>
-                  <ArrowRight className="ml-2 h-5 w-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
+                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm">
+              <Button size="lg" variant="outline" asChild className="text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm w-full sm:w-auto">
                 <Link href="/auth/login" className="font-semibold">
                   Sign In
                 </Link>
