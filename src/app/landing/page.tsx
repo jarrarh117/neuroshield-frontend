@@ -108,7 +108,7 @@ export default function LandingPage() {
               <Button variant="ghost" asChild className="hidden sm:inline-flex hover:bg-primary/10 transition-all duration-300">
                 <Link href="/auth/login">Sign In</Link>
               </Button>
-              <Button asChild className="btn-glow relative overflow-hidden group">
+              <Button asChild className="btn-glow relative overflow-hidden group hidden sm:inline-flex">
                 <Link href="/auth/signup" className="relative z-10">
                   <span className="relative z-10">Get Started</span>
                   <motion.div
@@ -168,10 +168,10 @@ export default function LandingPage() {
                 variants={itemVariants}
                 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight px-2"
               >
-                <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+                <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
                   Protect Your Digital World
                 </span>
-                <span className="block text-foreground/90 text-2xl sm:text-3xl md:text-4xl mt-2">
+                <span className="block text-foreground text-2xl sm:text-3xl md:text-4xl mt-2">
                   with AI Intelligence
                 </span>
               </motion.h1>
@@ -179,7 +179,7 @@ export default function LandingPage() {
               {/* Subheadline */}
               <motion.p
                 variants={itemVariants}
-                className="text-base sm:text-lg text-muted-foreground/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+                className="text-base sm:text-lg text-foreground/80 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
               >
               Advanced malware detection powered by machine learning. Scan files and URLs in real-time, 
               get instant threat analysis, and stay protected with{' '}
@@ -209,15 +209,15 @@ export default function LandingPage() {
               variants={itemVariants}
               className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm px-4"
             >
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-foreground/70">
                 <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                 <span className="text-xs sm:text-sm">Join <span className="text-primary font-bold">10,000+</span> users</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-foreground/70">
                 <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 fill-yellow-500" />
                 <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">4.9/5</span> rating</span>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
+              <div className="flex items-center gap-2 text-foreground/70">
                 <Award className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
                 <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">95%+</span> accuracy</span>
               </div>
@@ -243,7 +243,7 @@ export default function LandingPage() {
             </motion.div>
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl sm:text-4xl font-bold mb-3 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent"
+              className="text-3xl sm:text-4xl font-bold mb-3 text-foreground"
             >
               Powerful Features for
               <br />
@@ -253,7 +253,7 @@ export default function LandingPage() {
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-muted-foreground text-base max-w-2xl mx-auto leading-relaxed"
+              className="text-foreground/70 text-base max-w-2xl mx-auto leading-relaxed"
             >
               Everything you need to detect, analyze, and prevent malware threats with cutting-edge AI technology
             </motion.p>
@@ -323,13 +323,13 @@ export default function LandingPage() {
             </motion.div>
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl sm:text-4xl font-bold mb-3"
+              className="text-3xl sm:text-4xl font-bold mb-3 text-foreground"
             >
               How It Works
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-muted-foreground text-base max-w-2xl mx-auto"
+              className="text-foreground/70 text-base max-w-2xl mx-auto"
             >
               Get started in three simple steps
             </motion.p>
@@ -376,10 +376,10 @@ export default function LandingPage() {
             variants={fadeInUp}
             className="text-center mb-10"
           >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-3">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-foreground">
               Trusted by Thousands
             </h2>
-            <p className="text-muted-foreground text-base">
+            <p className="text-foreground/70 text-base">
               Join the community protecting their digital assets
             </p>
           </motion.div>
@@ -425,14 +425,14 @@ export default function LandingPage() {
                 </div>
               </motion.div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-foreground">
                 Ready to Secure Your
                 <br />
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                   Digital Assets?
                 </span>
               </h2>
-              <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-foreground/70 text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of users who trust NeuroShield for advanced malware protection and real-time threat detection
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
