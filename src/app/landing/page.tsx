@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -180,7 +179,7 @@ export default function LandingPage() {
                 <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.5)]">
                   Protect Your Digital World
                 </span>
-                <span className="block text-foreground text-2xl sm:text-3xl md:text-4xl mt-2">
+                <span className="block text-primary-foreground text-2xl sm:text-3xl md:text-4xl mt-2">
                   with AI Intelligence
                 </span>
               </motion.h1>
@@ -188,11 +187,11 @@ export default function LandingPage() {
               {/* Subheadline */}
               <motion.p
                 variants={itemVariants}
-                className="text-base sm:text-lg text-foreground/80 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+                className="text-base sm:text-lg text-primary-foreground/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
               >
               Advanced malware detection powered by machine learning. Scan files and URLs in real-time, 
               get instant threat analysis, and stay protected with{' '}
-              <span className="text-primary font-semibold">95%+ accuracy</span>.
+              <span className="text-accent font-semibold">95%+ accuracy</span>.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -218,17 +217,17 @@ export default function LandingPage() {
               variants={itemVariants}
               className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm px-4"
             >
-              <div className="flex items-center gap-2 text-foreground/70">
+              <div className="flex items-center gap-2 text-primary-foreground/80">
                 <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                <span className="text-xs sm:text-sm">Join <span className="text-primary font-bold">10,000+</span> users</span>
+                <span className="text-xs sm:text-sm">Join <span className="text-accent font-bold">10,000+</span> users</span>
               </div>
-              <div className="flex items-center gap-2 text-foreground/70">
-                <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 fill-yellow-500" />
-                <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">4.9/5</span> rating</span>
+              <div className="flex items-center gap-2 text-primary-foreground/80">
+                <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-400 fill-yellow-400" />
+                <span className="text-xs sm:text-sm"><span className="text-primary-foreground font-bold">4.9/5</span> rating</span>
               </div>
-              <div className="flex items-center gap-2 text-foreground/70">
+              <div className="flex items-center gap-2 text-primary-foreground/80">
                 <Award className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
-                <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">95%+</span> accuracy</span>
+                <span className="text-xs sm:text-sm"><span className="text-primary-foreground font-bold">95%+</span> accuracy</span>
               </div>
             </motion.div>
           </motion.div>
