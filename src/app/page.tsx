@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthContext } from '@/contexts/AuthContext';
-import { LandingLoader } from '@/components/cosmic/LandingLoader';
+import { CosmicPortalLoader } from '@/components/cosmic/CosmicPortalLoader';
 
 export default function HomePage() {
   const router = useRouter();
@@ -25,7 +25,7 @@ export default function HomePage() {
 
   // Show enhanced loader while checking auth status
   if (showLoader && loading) {
-    return <LandingLoader onComplete={() => setShowLoader(false)} duration={2000} />;
+    return <CosmicPortalLoader onComplete={() => setShowLoader(false)} duration={2000} />;
   }
 
   // Fallback for quick redirects
