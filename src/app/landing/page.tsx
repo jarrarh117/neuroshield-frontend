@@ -141,7 +141,7 @@ export default function LandingPage() {
           </div>
 
         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
             <motion.div
               className="text-center w-full"
               initial="hidden"
@@ -230,7 +230,7 @@ export default function LandingPage() {
       {/* Features Section */}
       <section id="features" className="relative py-16 sm:py-20 bg-background">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -310,7 +310,7 @@ export default function LandingPage() {
       {/* How It Works Section */}
       <section id="how-it-works" className="relative py-16 sm:py-20 bg-gradient-to-b from-muted/30 to-background">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -368,7 +368,7 @@ export default function LandingPage() {
       {/* Stats Section */}
       <section id="stats" className="relative py-16 sm:py-20 bg-background">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -397,7 +397,7 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className="relative py-16 sm:py-20 bg-background">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="max-w-5xl mx-auto">
+          <div className="w-full max-w-7xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -456,17 +456,19 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="relative border-t border-border/40 py-12 bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <Shield className="h-7 w-7 text-primary" />
-              <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                NeuroShield
-              </span>
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-3">
+                <Shield className="h-7 w-7 text-primary" />
+                <span className="font-bold text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                  NeuroShield
+                </span>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                © {new Date().getFullYear()} NeuroShield. All rights reserved. Powered by AI Intelligence.
+              </p>
             </div>
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} NeuroShield. All rights reserved. Powered by AI Intelligence.
-            </p>
           </div>
         </div>
       </footer>
