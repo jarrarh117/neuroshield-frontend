@@ -46,13 +46,26 @@ const fadeInUp = {
 };
 
 export default function LandingPage() {
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(() => {
+    // Check if loader has already been shown in this session
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('loaderShown');
+    }
+    return true;
+  });
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
+  const handleLoaderComplete = () => {
+    setShowLoader(false);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('loaderShown', 'true');
+    }
+  };
+
   if (showLoader) {
-    return <LandingLoader onComplete={() => setShowLoader(false)} duration={2500} />;
+    return <LandingLoader onComplete={handleLoaderComplete} duration={2500} />;
   }
 
   return (
@@ -131,51 +144,47 @@ export default function LandingPage() {
             <div className="absolute top-20 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
-        <div className="w-full px-6 sm:px-8 lg:px-12 relative z-10">
-          <motion.div
-            className="text-center w-full"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-6 sm:mb-8 inline-block px-4">
-              <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 border border-primary/30 text-primary text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg shadow-primary/20"
-                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
-                transition={{ duration: 0.2 }}
-              >
-                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" />
-                <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold whitespace-nowrap">
-                  AI-Powered Malware Detection
-                </span>
-                <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+        <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              className="text-center w-full"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+            >
+              {/* Badge */}
+              <motion.div variants={itemVariants} className="mb-6 sm:mb-8">
+                <motion.div
+                  className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 border border-primary/30 text-primary text-xs sm:text-sm font-medium backdrop-blur-sm shadow-lg shadow-primary/20"
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(168,85,247,0.4)' }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" />
+                  <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-semibold">
+                    AI-Powered Malware Detection
+                  </span>
+                  <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 animate-pulse" style={{ animationDelay: '0.5s' }} />
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight mb-6 sm:mb-8 leading-[1.15] px-4"
-            >
-              <span className="inline-block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
-                Protect Your
-              </span>
-              <br />
-              <span className="inline-block bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-                Digital World
-              </span>
-              <br />
-              <span className="inline-block text-foreground/90 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mt-2">
-                with AI Intelligence
-              </span>
-            </motion.h1>
+              {/* Main Headline */}
+              <motion.h1
+                variants={itemVariants}
+                className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 leading-tight px-2"
+              >
+                <span className="block bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient drop-shadow-[0_0_30px_rgba(168,85,247,0.3)]">
+                  Protect Your Digital World
+                </span>
+                <span className="block text-foreground/90 text-2xl sm:text-3xl md:text-4xl mt-2">
+                  with AI Intelligence
+                </span>
+              </motion.h1>
 
-            {/* Subheadline */}
-            <motion.p
-              variants={itemVariants}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground/90 mb-8 sm:mb-10 max-w-4xl mx-auto leading-relaxed font-light px-4"
-            >
+              {/* Subheadline */}
+              <motion.p
+                variants={itemVariants}
+                className="text-base sm:text-lg text-muted-foreground/90 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+              >
               Advanced malware detection powered by machine learning. Scan files and URLs in real-time, 
               get instant threat analysis, and stay protected with{' '}
               <span className="text-primary font-semibold">95%+ accuracy</span>.
@@ -249,6 +258,8 @@ export default function LandingPage() {
             />
           </div>
         </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* Features Section */}
