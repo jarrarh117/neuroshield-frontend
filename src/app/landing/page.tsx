@@ -128,7 +128,7 @@ export default function LandingPage() {
       {/* Content Layer - z-10 */}
       <div className="relative z-10">
         {/* Hero Section */}
-        <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20">
+        <section className="relative pt-32 pb-20 sm:pt-40 sm:pb-24">
           {/* 2D Hero Background - Behind content */}
           <div className="absolute inset-0 -z-10 overflow-hidden">
             <motion.div 
@@ -138,10 +138,6 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-background/80" />
               <Hero2D />
             </motion.div>
-
-            {/* Gradient Overlays */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute top-20 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
           </div>
 
         <div className="w-full px-4 sm:px-6 lg:px-8 relative z-10">
@@ -193,26 +189,15 @@ export default function LandingPage() {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center mb-10 sm:mb-12 px-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 sm:mb-12 px-4"
             >
-              <Button size="lg" asChild className="btn-glow text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-xl shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 group relative overflow-hidden w-full sm:w-auto">
+              <Button size="lg" asChild className="btn-glow text-base px-8 py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group w-full sm:w-auto">
                 <Link href="/auth/signup">
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-accent/20 to-primary/20"
-                    animate={{
-                      x: ['-100%', '100%'],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }}
-                  />
-                  <span className="relative z-10 font-semibold">Get Started Free</span>
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 relative z-10 group-hover:translate-x-2 transition-transform duration-300" />
+                  <span className="font-semibold">Get Started Free</span>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="text-base sm:text-lg px-8 sm:px-10 py-5 sm:py-7 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm w-full sm:w-auto">
+              <Button size="lg" variant="outline" asChild className="text-base px-8 py-6 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 w-full sm:w-auto">
                 <Link href="/auth/login" className="font-semibold">
                   Sign In
                 </Link>
@@ -222,49 +207,31 @@ export default function LandingPage() {
             {/* Social Proof */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center justify-center gap-8 text-sm"
+              className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 text-sm px-4"
             >
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Users className="h-5 w-5 text-primary" />
-                <span>Join <span className="text-primary font-bold">10,000+</span> users</span>
+                <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                <span className="text-xs sm:text-sm">Join <span className="text-primary font-bold">10,000+</span> users</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
-                <span><span className="text-foreground font-bold">4.9/5</span> rating</span>
+                <Star className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-500 fill-yellow-500" />
+                <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">4.9/5</span> rating</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <Award className="h-5 w-5 text-accent" />
-                <span><span className="text-foreground font-bold">95%+</span> accuracy</span>
+                <Award className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
+                <span className="text-xs sm:text-sm"><span className="text-foreground font-bold">95%+</span> accuracy</span>
               </div>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 cursor-pointer"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          onClick={() => {
-            const featuresSection = document.getElementById('features');
-            featuresSection?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center pt-2 hover:border-primary/60 transition-colors">
-            <motion.div
-              className="w-1.5 h-1.5 bg-primary rounded-full"
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
       <section id="features" className="relative py-16 sm:py-20 bg-background">
-        <div className="w-full px-6 sm:px-8 lg:px-12">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -337,12 +304,14 @@ export default function LandingPage() {
               color="#60a5fa"
             />
           </motion.div>
+          </div>
         </div>
       </section>
 
       {/* How It Works Section */}
       <section id="how-it-works" className="relative py-16 sm:py-20 bg-gradient-to-b from-muted/30 to-background">
-        <div className="w-full px-6 sm:px-8 lg:px-12">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -393,12 +362,14 @@ export default function LandingPage() {
               icon={CheckCircle2}
             />
           </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Stats Section */}
       <section id="stats" className="relative py-16 sm:py-20 bg-background">
-        <div className="w-full px-6 sm:px-8 lg:px-12">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -420,25 +391,27 @@ export default function LandingPage() {
             <StatCard number="1M+" label="Files Scanned" index={2} />
             <StatCard number="<5s" label="Scan Time" index={3} />
           </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="relative py-16 sm:py-20 bg-background">
-        <div className="w-full px-6 sm:px-8 lg:px-12">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="relative max-w-5xl mx-auto text-center p-10 sm:p-12 rounded-3xl border border-primary/20 overflow-hidden backdrop-blur-sm"
+            className="relative text-center p-8 sm:p-12 rounded-3xl border border-primary/20 overflow-hidden backdrop-blur-sm"
             style={{
               background: 'linear-gradient(135deg, rgba(168,85,247,0.1) 0%, rgba(56,189,248,0.1) 100%)',
             }}
           >
             {/* Animated Background Elements */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl" />
             
             <div className="relative z-10">
               <motion.div
@@ -453,24 +426,24 @@ export default function LandingPage() {
                 </div>
               </motion.div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
                 Ready to Secure Your
                 <br />
                 <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                   Digital Assets?
                 </span>
               </h2>
-              <p className="text-muted-foreground text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-muted-foreground text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
                 Join thousands of users who trust NeuroShield for advanced malware protection and real-time threat detection
               </p>
-              <div className="flex flex-col sm:flex-row gap-5 justify-center">
-                <Button size="lg" asChild className="btn-glow text-lg px-10 py-7 rounded-xl shadow-2xl shadow-primary/30 hover:shadow-primary/50 transition-all duration-300 group">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" asChild className="btn-glow text-base px-8 py-6 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 group w-full sm:w-auto">
                   <Link href="/auth/signup">
                     <span className="font-semibold">Start Free Trial</span>
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="text-lg px-10 py-7 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 backdrop-blur-sm">
+                <Button size="lg" variant="outline" asChild className="text-base px-8 py-6 rounded-xl border-2 border-primary/30 hover:border-primary/60 hover:bg-primary/10 transition-all duration-300 w-full sm:w-auto">
                   <Link href="/auth/login" className="font-semibold">
                     Sign In
                   </Link>
@@ -478,6 +451,7 @@ export default function LandingPage() {
               </div>
             </div>
           </motion.div>
+          </div>
         </div>
       </section>
 
